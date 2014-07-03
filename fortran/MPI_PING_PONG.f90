@@ -1,8 +1,8 @@
 program MPI_PING_PONG
 ! This program is known as a ping pong program. It uses MPI_SEND and MPI_RECV
 ! to send messages back and forth between two processes.
+    use mpi
     implicit none
-    include 'mpif.h'
     integer rank, size, ierror, tag, status(MPI_STATUS_SIZE)
     integer ping_pong_counter ! This will increment each time a message is received.
     integer isEven
@@ -23,6 +23,9 @@ program MPI_PING_PONG
             print *,'Process',rank,'sending counter value of',ping_pong_counter
             call MPI_SEND(ping_pong_counter,1,MPI_INTEGER,partner_rank,5,MPI_COMM_WORLD,ierror)
         else
+            ! Note that MPI_RECV has an additional argument: Status. You will encounter a segfault
+            ! if you don't have that argument.
+            ! (Thanks to Vladimir F on Stack Overflow for telling me)
             call MPI_RECV(ping_pong_counter,1,MPI_INTEGER,partner_rank,5,MPI_COMM_WORLD,status,ierror)
             print *,'Process',rank,'getting counter value of',ping_pong_counter
         endif

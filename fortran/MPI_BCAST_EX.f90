@@ -5,7 +5,7 @@ program MPI_BCAST_EX
 ! See the C program "compare_bcast.c" for a demonstration of this.
 
     implicit none
-    include 'mpif.h'
+    use mpi
     integer rank, size, ierror, tag, status(MPI_STATUS_SIZE)
     integer dummy_data
     call MPI_INIT(ierror)                            ! Initialize MPI on all processes.

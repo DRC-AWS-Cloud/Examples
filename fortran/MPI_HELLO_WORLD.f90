@@ -1,5 +1,6 @@
    program hello
-   include 'mpif.h'
+   use mpi
+   implicit none
    integer rank, size, ierror, tag, status(MPI_STATUS_SIZE)
    
    call MPI_INIT(ierror)
