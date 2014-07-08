@@ -1,5 +1,8 @@
 //Author: Joshua Nyden
 
+//This code exists to demonstrate that each MPI process has its own copy of memory.
+//Variables with the same name as one another can and will hold different values.
+
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
