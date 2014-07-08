@@ -20,11 +20,13 @@ int main(int argc, char** argv) {
   int name_len;
   MPI_Get_processor_name(processor_name,&name_len);
 
-  // Create a random number
-  int random_number;
-  random_number = rand() % 10 + 1;
+  // Create a number
+  int data;
   
-  printf("Process %d 's value for random_number is %d .\n",world_rank,random_number);
+  //Set it to the processor's rank.
+  data = world_rank;
+  
+  printf("Process %d 's value for data is %d .\n",world_rank,data);
 
   MPI_Finalize();
 }
