@@ -3,7 +3,6 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
-//#include <time.h>
 
 int main(int argc, char** argv) {
   MPI_Init(NULL, NULL);
@@ -23,7 +22,6 @@ int main(int argc, char** argv) {
 
   // Create a random number
   int random_number;
-//  srand();
   random_number = rand() % 10 + 1;
   
   printf("Process %d 's value for random_number is %d .\n",world_rank,random_number);
